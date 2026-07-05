@@ -313,7 +313,6 @@ async def websocket_endpoint(websocket: WebSocket):
             pass
 PYEOF
 
-echo "=== Setup complete. Starting server... ==="
-
-# 4. Start the server
-cd /workspace && PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True uvicorn server:app --host 0.0.0.0 --port 8000
+echo "=== Setup complete. ==="
+echo "To start the server, run:"
+echo "cd /workspace && PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True uvicorn server:app --host 0.0.0.0 --port 8000"
