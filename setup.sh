@@ -9,7 +9,14 @@ pip install hf_transfer opencv-python-headless==4.11.0.86 transformers==4.57.1 n
 # 2. Download the model (skips if already present on persistent volume)
 if [ ! -d "/workspace/locate-anything-3b" ]; then
     echo "Downloading model..."
-    python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='nvidia/LocateAnything-3B', local_dir='/workspace/locate-anything-3b')"
+    python -c "
+    from huggingface_hub import snapshot_download
+    snapshot_download(
+        repo_id='nvidia/LocateAnything-3B',
+        local_dir='/workspace/locate-anything-3b',
+        ignore_patterns=['assets/*.mp4', 'assets/*.png', 'assets/*.jpg', '*.png']
+    )
+    "
 else
     echo "Model already present, skipping download."
 fi
